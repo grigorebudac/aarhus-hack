@@ -1,11 +1,20 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, { useState } from "react";
+
+import Container from "src/components/Container";
+import OptionToggle from "src/components/OptionToggle";
 
 const Home = () => {
+  const [lightsOn, setLightsOn] = useState(false);
+
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <Container scrollable>
+      <OptionToggle
+        title="Option1"
+        description="Option does that"
+        active={lightsOn}
+        onChange={setLightsOn}
+      />
+    </Container>
   );
 };
 
