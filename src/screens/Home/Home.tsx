@@ -10,10 +10,16 @@ import { TreeWrapper } from "./Home.styles";
 
 const Home = () => {
   const [lightsOn, setLightsOn] = useState(false);
+  const [partyOn, setPartyOn] = useState(false);
 
   const handleTurnLights = (active: boolean) => {
     new AppService().turnLights(active);
     setLightsOn(active);
+  };
+
+  const handleParty = (active: boolean) => {
+    new AppService().turnParty(active);
+    setPartyOn(active);
   };
 
   return (
@@ -27,6 +33,15 @@ const Home = () => {
         description="Turn the tree's lights"
         active={lightsOn}
         onChange={handleTurnLights}
+      />
+
+      <Divider />
+
+      <OptionToggle
+        title="Party Mode"
+        description="Get some fun having a party"
+        active={partyOn}
+        onChange={handleParty}
       />
 
       <Divider />
