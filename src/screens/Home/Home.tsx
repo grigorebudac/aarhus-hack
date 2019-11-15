@@ -3,6 +3,7 @@ import { Image } from "react-native";
 
 import Container from "src/components/Container";
 import OptionToggle from "src/components/OptionToggle";
+import OptionSlider from "src/components/OptionSlider";
 import Divider from "src/components/Divider";
 
 import AppService from "src/services/AppService";
@@ -45,6 +46,7 @@ const Home = () => {
       />
 
       <Divider />
+      <OptionSlider />
     </Container>
   );
 };
