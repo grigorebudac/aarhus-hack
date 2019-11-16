@@ -70,7 +70,7 @@ const Home = () => {
         title="Opacity"
         description="Modify the LED's opacity"
         min={0}
-        max={100}
+        max={225}
         value={opacity}
         onChange={handleChangeOpacity}
       />

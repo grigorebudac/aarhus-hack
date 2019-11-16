@@ -14,7 +14,7 @@ const OptionSlider = (props: Components.OptionSlider) => {
         maximumValue={props.max}
         onSlidingComplete={props.onChange}
         minimumTrackTintColor="rgb(51, 102, 255)"
-        maximumTrackTintColor="rgb(51, 102, 255)"
+        maximumTrackTintColor="rgba(51, 102, 255, 0.5)"
         thumbTintColor="rgb(51, 102, 255)"
         step={1}
       />
