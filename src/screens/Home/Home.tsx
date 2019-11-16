@@ -21,7 +21,7 @@ const Home = () => {
   };
 
   const handleParty = (active: boolean) => {
-    new AppService().turnParty(active);
+    new AppService().turnParty();
     setPartyOn(active);
   };
 
@@ -73,9 +73,9 @@ const Home = () => {
         title="Color"
         description="Change the LED's color"
         colors={[
-          "rgb(145, 61, 136)",
-          "rgb(52, 73, 94)",
-          "rgb(30, 130, 76)",
+          "rgb(255, 0, 0)",
+          "rgb(0, 255, 0)",
+          "rgb(0, 0, 255)",
           "rgb(244, 208, 63)",
           "rgb(232, 126, 4)",
           "rgb(103, 128, 159)"

@@ -13,7 +13,7 @@ class AppService {
     // 3 - predefined
   }
 
-  public turnParty(status: boolean) {
+  public turnParty() {
     return this.turnLights(1);
   }
 
@@ -33,7 +33,7 @@ class AppService {
     await this.turnLights(3);
     return setTimeout(() => {
       return axios.post(`/colors/${args[0]}/${args[1]}/${args[2]}`);
-    }, 700);
+    }, 1000);
   }
 
   public pinAction({ con, action, pin, value }: Utils.PinAction) {
