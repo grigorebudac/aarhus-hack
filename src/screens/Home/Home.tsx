@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 
 import Container from "src/components/Container";
 import OptionToggle from "src/components/OptionToggle";
@@ -12,6 +12,7 @@ import { TreeWrapper } from "./Home.styles";
 const Home = () => {
   const [lightsOn, setLightsOn] = useState(false);
   const [partyOn, setPartyOn] = useState(false);
+  const [distanceOpacity, setDistanceOpacity] = useState(false);
   const [distance, setDistance] = useState(10);
   const [opacity, setOpacity] = useState(100);
 
@@ -23,6 +24,10 @@ const Home = () => {
   const handleParty = (active: boolean) => {
     new AppService().turnParty(active);
     setPartyOn(active);
+  };
+
+  const handleTurnDistanceOpacity = (active: boolean) => {
+    setDistanceOpacity(active);
   };
 
   const handleChangeDistance = (value: number) => {
@@ -41,7 +46,7 @@ const Home = () => {
 
       <OptionToggle
         title="Lights"
-        description="Turn the tree's lights"
+        description="Toggle the tree's lights"
         active={lightsOn}
         onChange={handleTurnLights}
       />
@@ -49,31 +54,48 @@ const Home = () => {
       <Divider />
 
       <OptionToggle
-        title="Party Mode"
+        title="Party mode"
         description="Get some fun having a party"
         active={partyOn}
         onChange={handleParty}
       />
 
       <Divider />
+
+      <OptionToggle
+        title="Power save"
+        description="Adjust the tree's brightness based on distance"
+        active={distanceOpacity}
+        onChange={handleTurnDistanceOpacity}
+      />
+
+      <Divider />
+
       <OptionSlider
         title="Distance"
-        description="Adjust the distance"
+        description="Adjust the distance required to toggle lights"
         min={0}
         max={13}
         value={distance}
         onChange={handleChangeDistance}
       />
 
-      <Divider />
-      <OptionSlider
-        title="Opacity"
-        description="Modify the LED's opacity"
-        min={0}
-        max={225}
-        value={opacity}
-        onChange={handleChangeOpacity}
-      />
+      {!distanceOpacity ? (
+        <>
+          <Divider />
+
+          <OptionSlider
+            title="Opacity"
+            description="Modify the LED's opacity"
+            min={0}
+            max={225}
+            value={opacity}
+            onChange={handleChangeOpacity}
+          />
+        </>
+      ) : (
+        <View />
+      )}
     </Container>
   );
 };
