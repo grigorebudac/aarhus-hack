@@ -11,8 +11,8 @@ const App = () => {
     init();
   }, []);
 
-  const init = async () => {
-    await new AppService().init();
+  const init = () => {
+    new AppService().init();
   };
 
   return (
