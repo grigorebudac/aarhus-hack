@@ -3,6 +3,6 @@ declare module Components {
     title: string;
     description: string;
     colors: string[];
-    onChange: (color: string) => void;
+    onChange: (colors: string) => void;
   }
 }

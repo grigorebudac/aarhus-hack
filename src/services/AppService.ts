@@ -5,18 +5,35 @@ class AppService {
     return axios.get("/init");
   }
 
-  public turnLights(status: boolean) {
-    const endpoint = status ? 1 : 0;
-    return axios.post(`/lights/${endpoint}`);
+  public turnLights(status: number) {
+    return axios.post(`/lights/${status}`);
+
+    // 1- blinking
+    // 2 - static
+    // 3 - predefined
   }
 
   public turnParty(status: boolean) {
-    const endpoint = status ? 1 : 0;
-    return axios.get(`/party/${endpoint}`);
+    return this.turnLights(1);
   }
 
-  public changeBrightness(brightness: number) {
+  public async changeBrightness(brightness: number) {
     return axios.post(`/brightness/${brightness}`);
+  }
+
+  public async changeColor(rgbColor: string) {
+    if (rgbColor === "") {
+      return this.turnLights(2);
+    }
+
+    const args = rgbColor
+      .substring(rgbColor.indexOf("(") + 1, rgbColor.length - 1)
+      .split(", ");
+
+    await this.turnLights(3);
+    return setTimeout(() => {
+      return axios.post(`/colors/${args[0]}/${args[1]}/${args[2]}`);
+    }, 700);
   }
 
   public pinAction({ con, action, pin, value }: Utils.PinAction) {

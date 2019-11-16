@@ -1,13 +1,16 @@
 import React from "react";
 
-import { ColorComponent } from "./Color.styles";
+import { Wrapper, ColorComponent } from "./Color.styles";
 
 const Color = (props: Components.Color) => {
   return (
-    <ColorComponent
-      onPress={() => props.onPress(props.value)}
-      value={props.value}
-    />
+    <Wrapper onPress={() => props.onPress(props.value)} activeOpacity={0.3}>
+      <ColorComponent
+        active={props.active}
+        value={props.value}
+        onPress={() => {}}
+      />
+    </Wrapper>
   );
 };
 

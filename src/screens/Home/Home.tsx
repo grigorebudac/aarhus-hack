@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, View } from "react-native";
+import { Image } from "react-native";
 
 import Container from "src/components/Container";
 import OptionToggle from "src/components/OptionToggle";
@@ -16,7 +16,7 @@ const Home = () => {
   const [brightness, setBrightness] = useState(255);
 
   const handleTurnLights = (active: boolean) => {
-    new AppService().turnLights(active);
+    new AppService().turnLights(active ? 2 : 0);
     setLightsOn(active);
   };
 
@@ -28,6 +28,10 @@ const Home = () => {
   const handleChangeBrightness = (value: number) => {
     new AppService().changeBrightness(value);
     setBrightness(value);
+  };
+
+  const handleChangeColor = (color: string) => {
+    new AppService().changeColor(color);
   };
 
   return (
@@ -69,14 +73,14 @@ const Home = () => {
         title="Color"
         description="Change the LED's color"
         colors={[
-          "#FF0000",
-          "#00FF00",
-          "#0000FF",
-          "#FF0000",
-          "#00FF00",
-          "#0000FF"
+          "rgb(145, 61, 136)",
+          "rgb(52, 73, 94)",
+          "rgb(30, 130, 76)",
+          "rgb(244, 208, 63)",
+          "rgb(232, 126, 4)",
+          "rgb(103, 128, 159)"
         ]}
-        onChange={() => {}}
+        onChange={handleChangeColor}
       />
     </Container>
   );
