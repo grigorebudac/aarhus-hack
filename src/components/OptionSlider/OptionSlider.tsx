@@ -3,16 +3,20 @@ import React from "react";
 import SectionTitle from "src/components/SectionTitle";
 import { Wrapper, Slider } from "./OptionsSlider.styles";
 
-const OptionSlider = () => {
+const OptionSlider = (props: Components.OptionSlider) => {
   return (
     <Wrapper>
-      <SectionTitle title="Change distance" description="Text here" />
+      <SectionTitle title={props.title} description={props.description} />
+
       <Slider
-        minimumValue={0}
-        maximumValue={13}
+        value={props.value}
+        minimumValue={props.min}
+        maximumValue={props.max}
+        onSlidingComplete={props.onChange}
         minimumTrackTintColor="rgb(51, 102, 255)"
         maximumTrackTintColor="rgb(51, 102, 255)"
         thumbTintColor="rgb(51, 102, 255)"
+        step={1}
       />
     </Wrapper>
   );

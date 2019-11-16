@@ -12,6 +12,8 @@ import { TreeWrapper } from "./Home.styles";
 const Home = () => {
   const [lightsOn, setLightsOn] = useState(false);
   const [partyOn, setPartyOn] = useState(false);
+  const [distance, setDistance] = useState(10);
+  const [opacity, setOpacity] = useState(100);
 
   const handleTurnLights = (active: boolean) => {
     new AppService().turnLights(active);
@@ -21,6 +23,14 @@ const Home = () => {
   const handleParty = (active: boolean) => {
     new AppService().turnParty(active);
     setPartyOn(active);
+  };
+
+  const handleChangeDistance = (value: number) => {
+    setDistance(value);
+  };
+
+  const handleChangeOpacity = (value: number) => {
+    setOpacity(value);
   };
 
   return (
@@ -46,7 +56,24 @@ const Home = () => {
       />
 
       <Divider />
-      <OptionSlider />
+      <OptionSlider
+        title="Distance"
+        description="Adjust the distance"
+        min={0}
+        max={13}
+        value={distance}
+        onChange={handleChangeDistance}
+      />
+
+      <Divider />
+      <OptionSlider
+        title="Opacity"
+        description="Modify the LED's opacity"
+        min={0}
+        max={100}
+        value={opacity}
+        onChange={handleChangeOpacity}
+      />
     </Container>
   );
 };
